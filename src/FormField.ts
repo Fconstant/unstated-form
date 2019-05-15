@@ -2,7 +2,7 @@ import { Validator } from './Validator';
 import { FormContainer } from './FormContainer';
 import { get, hasIn, isEmpty } from 'lodash';
 
-export type FormFieldInit<V> = {
+export interface FormFieldInit<V> {
     initial?: V,
     validator?: Validator<V>[] | Validator<V>
 }

@@ -2,7 +2,8 @@
   "name": "unstated-form",
   "version": "0.1.0",
   "description": "form library using unstated",
-  "main": "src/index.ts",
+  "main": "src/",
+  "types": "src/",
   "author": "Fconstant",
   "license": "MIT",
   "scripts": {

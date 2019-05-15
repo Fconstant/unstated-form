@@ -11,7 +11,7 @@ export type Errors = {
     [P in keyof any]?: string[]
 }
 
-export type FormState = {
+export interface FormState {
     values: any,
     errors: Errors,
     dirties: Set<FormField['name']>,
@@ -19,7 +19,7 @@ export type FormState = {
     validating: boolean
 }
 
-export type FormChangePayload = {
+export interface FormChangePayload {
     stateChange: {
         oldState: FormState,
         newState: FormState

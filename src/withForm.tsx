@@ -2,7 +2,7 @@ import React from 'react'
 import { FormContainer } from "./FormContainer"
 import { Subscribe } from "unstated"
 
-export type WithFormProps<F extends FormContainer> = {
+export interface WithFormProps<F extends FormContainer> {
     formContainer: F
 }
 
