@@ -1,8 +1,9 @@
 // @ts-ignore
+import { defer, filter, isEmpty } from './deps/lodash';
 import shallowEq from 'shallow-equal/objects';
 import { Container } from 'unstated';
+
 import { FormField } from './FormField';
-import { isEmpty, filter, defer } from 'lodash'
 import { debounce } from './util/fns';
 
 type SetValuesTuple<R> = [FormField<R>, R]
@@ -57,16 +58,7 @@ export abstract class FormContainer extends Container<FormState> {
     }
 
     initialize = async () => {
-        const self = this
-        this._formFields = filter(this, (v, k) => {
-            const isFormField = v instanceof FormField
-            if (isFormField) {
-                (v as unknown as FormField)._init(k, self)
-            }
-            return isFormField
-        }) as unknown as FormField[]
-
-        const initials = this._formFields
+        const initials = this.refreshFields()
             .filter(f => !!f.initial)
             .reduce((acc, v) => ({
                 ...acc,
@@ -77,6 +69,18 @@ export abstract class FormContainer extends Container<FormState> {
             values: initials,
             initializing: false
         })
+    }
+
+    refreshFields = () => {
+        const self = this
+        this._formFields = filter(this, (v, k) => {
+            const isFormField = v instanceof FormField
+            if (isFormField) {
+                (v as unknown as any)._init(k, self)
+            }
+            return isFormField
+        }) as unknown as FormField[]
+        return this._formFields
     }
 
     setValues = async (

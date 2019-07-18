@@ -1,6 +1,7 @@
-import React, { Children, useEffect, useMemo, useRef } from 'react'
-import { FormContainer } from './FormContainer';
+import React, { Children, useEffect, useMemo, useRef } from 'react';
 import { Subscribe } from 'unstated';
+
+import { FormContainer } from './FormContainer';
 
 export type UseFormPayload<F extends FormContainer> = [ F, React.ComponentType ]
 

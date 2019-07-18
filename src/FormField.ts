@@ -1,6 +1,7 @@
-import { Validator } from './Validator';
+import { get, hasIn, isEmpty } from './deps/lodash';
+
 import { FormContainer } from './FormContainer';
-import { get, hasIn, isEmpty } from 'lodash';
+import { Validator } from './Validator';
 
 export interface FormFieldInit<V> {
     initial?: V,
@@ -61,7 +62,7 @@ export class FormField<V = string> {
         this._validators.map(v => v(value))
     )
 
-    _init = (name: string, formContainer: FormContainer) => {
+    private _init = (name: string, formContainer: FormContainer) => {
         this._formContainer = formContainer;
         this._name = name;
     }

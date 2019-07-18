@@ -2,23 +2,25 @@
   "name": "unstated-form",
   "version": "0.1.0",
   "description": "form library using unstated",
-  "main": "src/",
+  "main": "dist/",
   "types": "src/",
   "author": "Fconstant",
   "license": "MIT",
   "scripts": {
     "build": "npm run build-lodash & tsc",
-    "build-lodash": "lodash include=get,hasIn,filter,defer,isEmpty,pick -p -o libs/lodash.custom.min.js"
+    "build-lodash": "lodash include=get,hasIn,filter,defer,isEmpty,pick -p -o src/deps/lodash.js"
   },
   "dependencies": {
     "shallow-equal": "^1.1.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.126",
     "@types/react": "^16.8.17",
+    "@types/lodash-es": "^4.17.3",
     "ava": "^1.4.1",
     "lodash-cli": "^4.17.5",
-    "typescript": "^3.4.5"
+    "react": "^16.8.6",
+    "typescript": "^3.5.3",
+    "unstated": "^2.1.1"
   },
   "peerDependencies": {
     "react": "^16.8.6",
